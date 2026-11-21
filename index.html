@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D 城市交通系统仿真</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Three.js 渲染画布挂载点 -->
+      <div id="scene-container"></div>
+
+      <!-- 模型加载提示（远程 GLB 加载期间显示，失败自动降级为程序化车辆） -->
+      <div id="loading" class="loading">
+        <div class="loading-card">
+          <div class="spinner"></div>
+          <p id="loading-text">正在初始化城市场景…</p>
+        </div>
+      </div>
+
+      <!-- 简易控制面板 -->
+      <aside id="panel" class="panel" hidden>
+        <h1 class="panel-title">城市交通仿真</h1>
+
+        <section class="panel-group">
+          <h2>运行控制</h2>
+          <div class="btn-row">
+            <button id="btn-toggle" class="btn btn-primary">暂停</button>
+            <button id="btn-add" class="btn">新增车辆</button>
+            <button id="btn-clear" class="btn btn-danger">清空车辆</button>
+          </div>
+        </section>
+
+        <section class="panel-group">
+          <h2>参数调节</h2>
+          <label class="slider-label">
+            车流速度 <span id="val-speed">1.0×</span>
+            <input id="slider-speed" type="range" min="0.2" max="2" step="0.1" value="1" />
+          </label>
+          <label class="slider-label">
+            时间流速 <span id="val-time">1.0×</span>
+            <input id="slider-time" type="range" min="0.2" max="4" step="0.2" value="1" />
+          </label>
+        </section>
+
+        <section class="panel-group">
+          <h2>运行状态</h2>
+          <ul class="stat-list">
+            <li><span>车辆总数</span><b id="stat-vehicles">0</b></li>
+            <li><span>运行状态</span><b id="stat-state">运行中</b></li>
+            <li><span>帧率 FPS</span><b id="stat-fps">--</b></li>
+            <li><span>模型状态</span><b id="stat-model">程序化模型</b></li>
+          </ul>
+        </section>
+
+        <section class="panel-group panel-tips">
+          <h2>视角操作</h2>
+          <p>左键拖拽：旋转视角</p>
+          <p>滚轮：缩放</p>
+          <p>右键拖拽：平移</p>
+        </section>
+      </aside>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
